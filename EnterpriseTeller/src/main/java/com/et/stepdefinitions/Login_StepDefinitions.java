@@ -3,6 +3,7 @@ package com.et.stepdefinitions;
 import com.et.helper.Constants;
 import com.et.helper.WaitHelper;
 import com.et.pageObjects.Login;
+import com.et.pageObjects.UC14_Deposits_01;
 import com.et.testBase.TestBase;
 
 import cucumber.api.java.en.Given;
@@ -10,6 +11,8 @@ import cucumber.api.java.en.Then;
 
 public class Login_StepDefinitions extends TestBase {
 
+	UC14_Deposits_01 dp= new UC14_Deposits_01();
+	
 	@Given("^user loads the \"([^\"]*)\" url$")
 	public void user_loads_the_url(String arg1) throws Throwable {
 		driver.get(prop.getProperty(arg1));
@@ -18,7 +21,7 @@ public class Login_StepDefinitions extends TestBase {
 
 	@Then("^user enters location as \"([^\"]*)\"$")
 	public void user_enters_location_as(String arg1) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		keyword.performClick(loginPage.cashbox);
 
 	}
 

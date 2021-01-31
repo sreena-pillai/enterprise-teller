@@ -11,7 +11,7 @@ import com.et.testBase.TestBase;
 public class Login extends TestBase {
 	WaitHelper waitHelper;
 
-	@FindBy(xpath="")
+	@FindBy(id="dropdownCurrency")
 	public WebElement cashbox;
 	
 	public Login(WebDriver driver) {
