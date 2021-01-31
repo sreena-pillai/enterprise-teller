@@ -1,0 +1,31 @@
+package com.et.utilities;
+
+import org.openqa.selenium.WebElement;
+
+import com.et.testBase.TestBase;
+
+public class Keywords extends TestBase {
+
+	public void click(WebElement element) {
+		element.click();
+
+	}
+
+	public void sendText(WebElement element, String text) {
+		element.sendKeys(text);
+	}
+
+	public void getText(WebElement element) {
+String text = element.getText();
+System.out.println("text retrieved is "+text);
+	}
+
+	public void handleWindow(WebElement element) {
+
+	}
+
+	public void handleWindow(String title) {
+
+	}
+
+}

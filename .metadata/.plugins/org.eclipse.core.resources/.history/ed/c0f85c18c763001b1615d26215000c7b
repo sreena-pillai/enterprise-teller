@@ -1,0 +1,27 @@
+package com.et.utilities;
+
+import com.et.testBase.TestBase;
+
+public class Keywords extends TestBase {
+
+	public void click() {
+
+	}
+
+	public void sendText() {
+
+	}
+
+	public void getText() {
+
+	}
+
+	public void handleWindow() {
+
+	}
+
+	public void handleWindow(String windowName) {
+
+	}
+
+}

@@ -1,0 +1,5 @@
+@UC1401
+Feature: Deposit
+		Process a deposit transaction and verify account number in session summary screen
+
+Background: 

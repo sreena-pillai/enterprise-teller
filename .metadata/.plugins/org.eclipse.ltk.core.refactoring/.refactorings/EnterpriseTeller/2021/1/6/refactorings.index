@@ -1,0 +1,17 @@
+1612094398809	Rename package 'EnterpriseTeller.EnterpriseTeller'
+1612094543890	Rename package 'com.et.browsers'
+1612094570199	Rename package 'com.et.os'
+1612094774958	Delete element
+1612094817676	Rename source folder 'src/test/java'
+1612095624628	Delete element
+1612095745337	Rename resource 'UC14_Deposits.feature'
+1612095932499	Delete element
+1612096628345	Delete element
+1612096982562	Rename type 'App'
+1612097080487	Move compilation unit
+1612097095338	Rename package 'com.et.constants'
+1612097264604	Rename type 'UC14_Deposits_StepDefinitions_01'
+1612097712884	Delete element
+1612099055373	Rename type 'keywords'
+1612106108371	Rename resource 'confi.properties'
+1612106938737	Rename package 'com.et.stepDefinitions'

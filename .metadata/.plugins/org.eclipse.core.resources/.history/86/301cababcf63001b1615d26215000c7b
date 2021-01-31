@@ -1,0 +1,16 @@
+package com.et.testBase;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+
+import com.et.helper.LoggerHelper;
+
+public class TestBase implements AllObjects{
+
+	
+	public static WebDriver driver;
+	
+	
+	Logger log = LoggerHelper.getLogger(LoggerHelper.class);
+	
+}

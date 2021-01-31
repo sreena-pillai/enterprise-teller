@@ -1,0 +1,14 @@
+@UC1401
+Feature: [1]UC14_Deposit_SessionSummary_Account Number
+Process a deposit transaction and verify account number in session summary screen
+
+Background: User should be on Tellerworkpad
+
+Given user loads the "UAT" url
+Then user enters location as "Lobby"
+And user enters cashbox
+And user clicks on signon button
+Then Teller workpad page is displayed
+
+Scenario: User perform deposit transaction
+When user clicks on deposits button

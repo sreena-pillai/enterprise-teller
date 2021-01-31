@@ -1,0 +1,11 @@
+package com.et.testBase;
+
+import com.et.pageObjects.Login;
+
+public interface AllObjects {
+
+	static Login loginPage = new Login(TestBase.driver);
+	
+	
+	
+}

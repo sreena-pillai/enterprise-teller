@@ -1,0 +1,245 @@
+package com.et.utilities;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.et.helper.LoggerHelper;
+import com.et.helper.WaitHelper;
+import com.et.testBase.TestBase;
+
+public class Keywords extends TestBase {
+	
+	public static WebDriverWait wait;
+	public static int defaultTimeOut = 20;
+	
+	static Logger logger = LoggerHelper.getLogger(WaitHelper.class);
+	
+	public Keywords(WebDriver driver) {
+		TestBase.driver=driver;
+	}
+
+	public void performClick(WebElement element) {
+		element.click();
+	}
+
+	public void sendText(WebElement element, String text) {
+		element.sendKeys(text);
+	}
+
+	public void getText(WebElement element) {
+		String text = element.getText();
+		System.out.println("text retrieved is " + text);
+	}
+
+	public void switchToWindow() {
+		driver.switchTo().window(null);
+	}
+
+	public static void handleWindow(String title) {
+		driver.switchTo().window(title);
+	}
+	public static void waitForElementToDisplay(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	public static void enterText(WebElement element, String value) {
+		element.sendKeys(value);
+
+	}
+
+	public static void waitForElementStale(WebElement element) {
+		wait.until(ExpectedConditions.stalenessOf(element));
+	}
+
+
+	public static boolean expectEnabled(WebElement element) {
+		return (element.isEnabled());
+	}
+
+	public static boolean expectDisabled(WebElement element) {
+		boolean status = element.isEnabled();
+		Assert.assertEquals(status, false, element + "is enabled");
+		return status;
+	}
+
+	public static boolean elementSelected(WebElement element) {
+		return element.isSelected();
+	}
+
+	public static boolean elementNotSelected(WebElement element) {
+		boolean status = element.isSelected();
+		Assert.assertEquals(status, false, element + "is selected");
+		System.out.println("status of select: " + status);
+		return status;
+
+	}
+
+//	public static Object[][] getUsersTestData(String sheetName) throws IOException {
+//		Object data[][] = util.getTestData(sheetName);
+//		return data;
+//	}
+
+	public static List<WebElement> getTableData(WebDriver driver, WebElement tableLoc, String expectedText) throws InterruptedException {
+
+		List<String> myTabdata = new ArrayList<String>();
+		Thread.sleep(3000);
+		// List<WebElement> trs =
+		// tableLoc.findElements(By.xpath("//tr[@class='ng-star-inserted']//td[1]"));
+//		List<WebElement> trs = tableLoc.findElements(By.xpath("//tr[@class='ng-star-inserted']"));
+		List<WebElement> trs = tableLoc.findElements(By.tagName("tr"));
+
+		// List<WebElement> trs =
+		// tableLoc.findElements(By.className("ng-star-inserted"));
+		for (WebElement tr : trs) {
+			// List<WebElement> tds = tr.findElements(By.tagName("span"));
+			List<WebElement> tds = tr.findElements(By.tagName("td"));
+			for (WebElement td : tds) {
+				List<WebElement> spans = td.findElements(By.tagName("span"));
+				for (WebElement span : spans) {
+					myTabdata.add(span.getText());
+					Thread.sleep(3000);
+					System.out.println("content size>>: " + span.getSize());
+					System.out.println(myTabdata);
+					Assert.assertEquals(myTabdata.contains(expectedText), true);
+//					System.out.println("content>> " + td.getAttribute("textContent").toString());
+				}
+			}
+		}
+		return trs;
+	}
+
+	public static void selectDropdownByVisibleText(WebElement selectDropDown, String visbleText) {
+		Select select = new Select(selectDropDown);
+		select.selectByVisibleText(visbleText);
+	}
+
+	public static void handleAlertPopup() {
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+
+	public static void handleWindowPopup() throws AWTException {
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+
+	}
+
+	public static void scrollToElement(WebElement element) throws InterruptedException {
+		Thread.sleep(2000);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	public static void fluentWait() {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				return driver.findElement(By.id("foo"));
+			}
+		});
+
+	}
+
+	public static boolean elementPresent(WebElement element) {
+		return element.isDisplayed();
+	}
+
+	public static void elementNotPresent(WebElement element) {
+		boolean elementDisplayStatus = element.isDisplayed();
+		Assert.assertEquals(elementDisplayStatus, false);
+	}
+
+	public static void CheckImage(WebElement ImageFile) throws Exception {
+		Boolean ImagePresent = (Boolean) ((JavascriptExecutor) driver).executeScript(
+				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				ImageFile);
+		if (!ImagePresent) {
+			System.out.println("Image not displayed.");
+		} else {
+			System.out.println("Image displayed.");
+		}
+	}
+
+	public static void getSizeOfImage(WebElement Image) throws Exception {
+		// Locate element for which you wants to get height and width.
+
+		// Get width of element.
+		int ImageWidth = Image.getSize().getWidth();
+		System.out.println("Image width Is " + ImageWidth + " pixels");
+
+		// Get height of element.
+		int ImageHeight = Image.getSize().getHeight();
+		System.out.println("Image height Is " + ImageHeight + " pixels");
+
+	}
+
+	public static void doubleClick(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.doubleClick(element).build().perform();
+	}
+
+	public static void rightClick(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.contextClick(element).build().perform();
+	}
+
+	public static void selectLastOptionInDropDownByIndex(WebElement element) {
+		Select sel = new Select(element);
+		int size = sel.getOptions().size();
+		sel.selectByIndex(size - 1);
+
+	}
+
+	public static void selectLastOptionInDropDownByVisibleText(WebElement element) {
+		List<WebElement> option = element.findElements(By.tagName("option"));
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for(int i =0;i<=option.size();i++) {
+			list.add(option.get(i).getText());
+		}
+		Collections.reverse(list);
+		String lastOption = list.get(0);
+		Select sel = new Select(element);
+		sel.selectByVisibleText(lastOption);
+
+	}
+
+	public static void waitForPageLoad(WebDriver driver) {
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+			}
+		};
+		WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
+		try {
+			wait.until(expectation);
+		} catch (Throwable error) {
+			logger.error(" Page load is timing out :" + error.getMessage());
+			Assert.assertFalse(false, "Timeout waiting for Page Load Request to complete.");
+		}
+	}
+}

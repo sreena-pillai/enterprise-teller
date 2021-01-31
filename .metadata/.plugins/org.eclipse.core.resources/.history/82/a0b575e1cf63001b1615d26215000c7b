@@ -1,0 +1,18 @@
+package com.et.testBase;
+
+import org.apache.log4j.Logger;
+
+import com.et.helper.LoggerHelper;
+import com.et.pageObjects.Login;
+
+public interface AllObjects {
+
+	
+	static Login loginPage = new Login();
+	
+	public void getLog(Class cls) {
+	Logger log = LoggerHelper.getLogger(cls.class);
+	
+	}
+	
+}

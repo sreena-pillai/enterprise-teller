@@ -1,0 +1,30 @@
+package com.et.utilities;
+
+import org.openqa.selenium.WebElement;
+
+import com.et.testBase.TestBase;
+
+public class Keywords extends TestBase {
+
+	public void click(WebElement element) {
+		element.click();
+
+	}
+
+	public void sendText() {
+
+	}
+
+	public void getText() {
+
+	}
+
+	public void handleWindow() {
+
+	}
+
+	public void handleWindow(String title) {
+
+	}
+
+}
