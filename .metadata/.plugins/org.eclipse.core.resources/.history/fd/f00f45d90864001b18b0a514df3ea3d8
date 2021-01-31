@@ -22,7 +22,6 @@ public class Login_StepDefinitions extends TestBase {
 	@Then("^user enters location as \"([^\"]*)\"$")
 	public void user_enters_location_as(String arg1) throws Throwable {
 		keyword.performClick(loginPage.cashbox);
-		System.out.println("test ");
 
 	}
 
