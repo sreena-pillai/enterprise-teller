@@ -1,5 +1,0 @@
-package com.et.testBase;
-
-public class TestBase implements AllObjects{
-
-}

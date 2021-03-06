@@ -24,7 +24,6 @@
 <fullyQualifiedTypeName name="org.testng.annotations.Test"/>
 <fullyQualifiedTypeName name="org.testng.annotations.DataProvider"/>
 <fullyQualifiedTypeName name="org.testng.annotations.AfterClass"/>
-<fullyQualifiedTypeName name="cucumber.api.java.en.Given"/>
 <fullyQualifiedTypeName name="cucumber.api.java.en.Then"/>
 <fullyQualifiedTypeName name="cucumber.api.java.en.When"/>
 <fullyQualifiedTypeName name="org.testng.log4testng.Logger"/>
@@ -32,4 +31,5 @@
 <fullyQualifiedTypeName name="com.et.helper.WaitHelper"/>
 <fullyQualifiedTypeName name="com.et.pageObjects.Login"/>
 <fullyQualifiedTypeName name="com.et.helper.Constants"/>
+<fullyQualifiedTypeName name="cucumber.api.java.en.Given"/>
 </qualifiedTypeNameHistroy>

@@ -32,7 +32,7 @@ public class TestBase implements AllObjects {
 		}
 	}
 
-	public WebDriver selectBrowser(String browser) {
+	public static WebDriver selectBrowser(String browser) {
 		if (System.getProperty("os.name").toLowerCase().contains(OS.WINDOWS.name().toLowerCase())) {
 			if (browser.equalsIgnoreCase(Browsers.CHROME.name())) {
 				System.setProperty("webdriver.chrome.driver",

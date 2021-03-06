@@ -1,9 +1,0 @@
-package com.et.testBase;
-
-import org.openqa.selenium.WebDriver;
-
-public class TestBase implements AllObjects{
-
-	
-	public static WebDriver driver;
-}

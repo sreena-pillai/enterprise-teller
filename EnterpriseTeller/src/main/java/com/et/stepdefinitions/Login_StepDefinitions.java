@@ -15,8 +15,10 @@ public class Login_StepDefinitions extends TestBase {
 	
 	@Given("^user loads the \"([^\"]*)\" url$")
 	public void user_loads_the_url(String arg1) throws Throwable {
+		
 		driver.get(prop.getProperty(arg1));
 		wait.WaitForElement(loginPage.cashbox, Constants.explicitWait);
+
 	}
 
 	@Then("^user enters location as \"([^\"]*)\"$")

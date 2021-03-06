@@ -1,6 +1,9 @@
 package com.et.helper;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
+import org.omg.CORBA.TIMEOUT;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +24,10 @@ Logger logger = LoggerHelper.getLogger(WaitHelper.class);
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		logger.info("element is visible..");
+	}
+	
+	public void implicitlyWait(long timeOutInSeconds) {
+		TestBase.driver.manage().timeouts().implicitlyWait(timeOutInSeconds,TimeUnit.SECONDS);
 	}
 
 }

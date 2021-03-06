@@ -1,4 +1,4 @@
-@UC1401 
+@UC1401 @t1
 Feature: [1]UC14_Deposit_SessionSummary_Account Number 
 	Process a deposit transaction and verify account number in session summary screen
 
@@ -10,6 +10,7 @@ Background: User should be on Tellerworkpad
 	And user clicks on signon button 
 	Then Teller workpad page is displayed 
 	
+@t3
 Scenario Outline: User perform deposit transaction 
 	When user clicks on deposits button 
 	Then user navigated to deposits page 
@@ -23,7 +24,7 @@ Scenario Outline: User perform deposit transaction
 	Examples: 
 		| accountType                    | accountNumber | cashAmount |
 		| Checkings/Savings/Money Market | 1013137508    | 100.00     |
-		| CD                             | 58878         | 20.00      |
-		| IRA/ESA                        | 123           | 10.00      |
+#		| CD                             | 58878         | 20.00      |
+#		| IRA/ESA                        | 123           | 10.00      |
 		
 		
